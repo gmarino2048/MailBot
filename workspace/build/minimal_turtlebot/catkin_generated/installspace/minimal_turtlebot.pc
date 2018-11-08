@@ -1,0 +1,8 @@
+prefix=/home/user/Desktop/MailBot/workspace/install
+
+Name: minimal_turtlebot
+Description: Description of minimal_turtlebot
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/user/Desktop/MailBot/workspace/install/lib 
+Requires: 
