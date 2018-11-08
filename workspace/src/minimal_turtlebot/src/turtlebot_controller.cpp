@@ -44,7 +44,7 @@ void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue,
 				state = 1;
 				direction = true;
 			}
-			else if (turtelbot_inputs.rightBumperPressed) {
+			else if (turtlebot_inputs.rightBumperPressed) {
 				state = 1;
 				direction = true;
 			}
@@ -68,7 +68,7 @@ void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue,
 			*vel = 0;
 			if (direction) *ang_vel = 0.3;
 			else *ang_vel = -0.3;
-			
+
 			if (turtlebot_inputs.nanoSecs - timer_start >= rotation_time){
 				state = 0;
 			}
