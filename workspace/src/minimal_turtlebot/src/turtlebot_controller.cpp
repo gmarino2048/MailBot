@@ -1,5 +1,8 @@
 #include "minimal_turtlebot/turtlebot_controller.h"
 
+#define VEL 0.15
+#define ANGULAR_VEL 0.5
+
 uint64_t timer_start;
 uint64_t backward_time = 1e9;
 uint64_t rotation_time = 2e9;
@@ -35,7 +38,7 @@ void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue,
 
 	switch (state) {
 		case 0: // Move forward
-			*vel = 0.3;
+			*vel = VEL;
 			*ang_vel = 0.0;
 			if (turtlebot_inputs.centerBumperPressed) {
 				state = 1;
@@ -56,7 +59,7 @@ void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue,
 			state = 2;
 			break;
 		case 2: // Wait for 1 sec, then enter turn
-			*vel = -0.3;
+			*vel = -VEL;
 			if (turtlebot_inputs.nanoSecs - timer_start >= backward_time) {
 				timer_start = turtlebot_inputs.nanoSecs;
 				state = 3;
@@ -64,7 +67,7 @@ void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue,
 			break;
 		case 3: // Rotate for 2 secs
 			*vel = 0;
-			if (direction) *ang_vel = 0.3;
+			if (direction) *ang_vel = ANGULAR_VEL;
 			else *ang_vel = -0.3;
 
 			if (turtlebot_inputs.nanoSecs - timer_start >= rotation_time){
