@@ -1,8 +1,8 @@
 #include "minimal_turtlebot/turtlebot_controller.h"
 
 uint64_t timer_start;
-uint64_t backward_time = 1e6;
-uint64_t rotation_time = 2e6;
+uint64_t backward_time = 1e9;
+uint64_t rotation_time = 2e9;
 
 int state = 0;
 bool direction;
@@ -54,6 +54,7 @@ void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue,
 			}
 			break;
 		case 1: // Move backward for 1 second
+			*vel = 0;
 			timer_start = turtlebot_inputs.nanoSecs;
 			state = 2;
 			break;
