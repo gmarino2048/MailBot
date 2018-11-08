@@ -9,6 +9,7 @@
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/user/Desktop/MailBot/workspace/devel:$CMAKE_PREFIX_PATH"
 export GAZEBO_MODEL_PATH="/opt/ros/kinetic/share/osrf_gear/models:$GAZEBO_MODEL_PATH"
+export LD_LIBRARY_PATH="/home/user/Desktop/MailBot/workspace/devel/lib:$LD_LIBRARY_PATH"
 export PWD="/home/user/Desktop/MailBot/workspace/build"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/user/Desktop/MailBot/workspace/devel/share/common-lisp"
 export ROS_PACKAGE_PATH="/home/user/Desktop/MailBot/workspace/src:$ROS_PACKAGE_PATH"
