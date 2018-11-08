@@ -32,9 +32,6 @@ void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue,
 	//soundValue.CLEANINGEND 
 
 	// Sensor input zone
-	if (turtlebot_inputs.centerBumperPressed) {
-		state = 1;
-	}
 
 	switch (state) {
 		case 0: // Move forward
