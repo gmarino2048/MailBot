@@ -117,7 +117,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/user/Desktop/MailBot/workspace/build/gtest/cmake_install.cmake")
-  include("/home/user/Desktop/MailBot/workspace/build/minimal_turtlebot/cmake_install.cmake")
 
 endif()
 
