@@ -1,4 +1,4 @@
-#include "minimal_turtlebot/turtlebot_controller.h"
+#include "../include/minimal_turtlebot/turtlebot_controller.h"
 
 // instantiate some special types for our commands  
 kobuki_msgs::Sound soundValue; 

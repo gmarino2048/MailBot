@@ -1,14 +1,21 @@
-#include "minimal_turtlebot/turtlebot_controller.h"
+#include "../include/minimal_turtlebot/turtlebot_controller.h"
 
-#define VEL 0.15
-#define ANGULAR_VEL 0.5
+// Define the movement constants
+#define VEL 0.1
+#define ANG_VEL 0.3
 
-uint64_t timer_start;
-uint64_t backward_time = 1e9;
-uint64_t rotation_time = 2e9;
+// The state responsible for sensor input
+uint8_t sensor_state;
+void set_sensor_state (turtlebotInputs inputs);
 
-int state = 0;
-bool direction;
+// Define the sensor state values
+#define OK 0
+#define BUMPER 1
+#define CLIFF 2
+#define WHEEL_DROP 4
+
+// Robot reaction functions
+
 
 void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue, float *vel, float *ang_vel)
  {
@@ -36,6 +43,7 @@ void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue,
 
 	// Sensor input zone
 
+/*
 	switch (state) {
 		case 0: // Move forward
 			*vel = VEL;
@@ -74,6 +82,5 @@ void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue,
 				state = 0;
 			}
 			break;
-	}
+	}*/
 }
-
