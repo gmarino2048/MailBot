@@ -1,4 +1,5 @@
 #include "../include/minimal_turtlebot/turtlebot_controller.h"
+#include "lib/controller.hpp"
 
 // Define the movement constants
 #define VEL 0.1
