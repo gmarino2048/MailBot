@@ -1,4 +1,7 @@
-#include <stdlib.h>
+#ifndef _movement_h
+#define _movement_h
+
+#include <stdint.h>
 
 namespace Turtlebot_Library {
     // Define the action state values
@@ -22,3 +25,5 @@ namespace Turtlebot_Library {
     void right_turn (float * ang_vel, float angular);
     void left_turn (float * ang_vel, float angular);
 }
+
+#endif

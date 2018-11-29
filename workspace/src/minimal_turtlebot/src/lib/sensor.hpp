@@ -1,3 +1,6 @@
+#ifndef _sensor_h
+#define _sensor_h
+
 #include <stdlib.h>
 #include "../../include/minimal_turtlebot/turtlebot_controller.h"
 
@@ -14,3 +17,5 @@ namespace Turtlebot_Library {
     bool check_laserscan (turtlebotInputs inputs);
     bool check_imu (turtlebotInputs inputs);
 };
+
+#endif
