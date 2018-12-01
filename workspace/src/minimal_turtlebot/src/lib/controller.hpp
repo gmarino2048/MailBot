@@ -9,8 +9,6 @@ namespace Control {
 
     struct Turtlebot_Movements;
 
-    void setup ();
-
     bool thread_complete ();
     bool start_process();
 

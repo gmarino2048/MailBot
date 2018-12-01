@@ -4,6 +4,9 @@
 #include "../lib/movement.hpp"
 #include "../lib/sensor.hpp"
 
+using namespace Movement;
+using namespace Sensor;
+
 namespace Reaction{
 
     struct Reaction_Inputs {
@@ -20,10 +23,13 @@ namespace Reaction{
 
         if (data->states->BUMPER != 0){
             bumper_hit(data->vel, data->ang_vel, data->velocity, data->angular, data->sound, data->states->BUMPER);
+            return (void *) &true;
         }
         else if (data->states->WHEEL != 0){
             wheel_drop(data->vel, data->ang_vel, data->velocity, data->angular, data->sound, data->states->WHEEL);
+            return (void *) &true;
         }
+        else return (void *) &false;
     }
 
     void bumper_hit (float * vel, float * ang_vel, float velocity, float angular, uint8_t * sound, uint8_t bumper_data){

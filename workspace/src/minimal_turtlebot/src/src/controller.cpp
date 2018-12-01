@@ -10,10 +10,6 @@ namespace Control {
         uint8_t sound;
     };
 
-    void setup () {
-
-    }
-
     bool thread_complete () {
         return control_thread_complete;
     }
