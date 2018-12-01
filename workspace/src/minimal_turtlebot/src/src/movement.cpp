@@ -1,7 +1,7 @@
 #include<stdlib.h>
 #include "../lib/movement.hpp"
 
-namespace Turtlebot_Library{
+namespace Movement{
     // The state responsible for controlling robot behavior
 
     uint8_t movement_state = STOPPED;

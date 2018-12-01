@@ -2,7 +2,7 @@
 #include "../lib/sensor.hpp"
 #include "../../include/minimal_turtlebot/turtlebot_controller.h"
 
-namespace Turtlebot_Library {
+namespace Sensor {
 
     struct SENSOR_STATES {
         uint8_t BUMPER;
@@ -85,7 +85,7 @@ namespace Turtlebot_Library {
     }
  
     bool check_laserscan (turtlebotInputs inputs) {
-
+        
     }
 
     bool check_imu (turtlebotInputs inputs) {

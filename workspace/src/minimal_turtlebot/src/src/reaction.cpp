@@ -2,8 +2,30 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include "../lib/movement.hpp"
+#include "../lib/sensor.hpp"
 
-namespace Turtlebot_Library{
+namespace Reaction{
+
+    struct Reaction_Inputs {
+        float * vel;
+        float * ang_vel;
+        float velocity;
+        float angular;
+        uint8_t * sound;
+        SENSOR_STATES * states;
+    };
+
+    void * react (void * inputs){
+        Reaction_Inputs * data = (Reaction_Inputs *) inputs;
+
+        if (data->states->BUMPER != 0){
+            bumper_hit(data->vel, data->ang_vel, data->velocity, data->angular, data->sound, data->states->BUMPER);
+        }
+        else if (data->states->WHEEL != 0){
+            wheel_drop(data->vel, data->ang_vel, data->velocity, data->angular, data->sound, data->states->WHEEL);
+        }
+    }
+
     void bumper_hit (float * vel, float * ang_vel, float velocity, float angular, uint8_t * sound, uint8_t bumper_data){
         bool left = (bumper_data >> 0) & 1;
         bool center = (bumper_data >> 1) & 1;

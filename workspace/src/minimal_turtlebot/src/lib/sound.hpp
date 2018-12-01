@@ -3,7 +3,7 @@
 
 #include<stdint.h>
 
-namespace Turtlebot_Library{
+namespace Sound{
     const uint8_t TURN_ON = 0;
     const uint8_t TURN_OFF = 1;
     const uint8_t RECHARGE = 2;
