@@ -15,8 +15,6 @@ namespace Reaction
         uint8_t next_state = Default;
         Turtlebot_Reaction reaction;
 
-        ROS_INFO("Default: %d", next_state);
-
         // State machine should always stop if lifted
         if (sensors.WHEEL != 0)
         {
@@ -29,6 +27,9 @@ namespace Reaction
         // Next check for bumper input
         bool shouldBacktrack = !running && sensors.BUMPER != 0;
         bool isBacktracking = current_reaction == Backtrack;
+
+        ROS_INFO("Should Backtrack: %d", shouldBacktrack);
+        ROS_INFO("Running: &d", running);
 
         if (isBacktracking) next_state = backtrack(&reaction, -1, current_time);
         else if (shouldBacktrack) 
