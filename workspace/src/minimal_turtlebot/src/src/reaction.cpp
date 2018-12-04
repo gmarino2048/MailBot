@@ -90,7 +90,7 @@ namespace Reaction
         {
             Movement::halt(&vel, &ang);
             Movement::reverse(&vel, Control::velocity);
-            ROS_INFO("Velocity: %d", vel);
+            ROS_INFO("Velocity: %f", vel);
             return Backtrack;
         }
         // Turn for  3s
