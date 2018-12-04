@@ -25,7 +25,7 @@ namespace Reaction
         }
         
         // Next check for bumper input
-        bool shouldBacktrack = !running && sensors.BUMPER != 0;
+        bool shouldBacktrack = !running && (sensors.BUMPER != 0 || sensors.CLIFF != 0);
         bool isBacktracking = current_reaction == Backtrack;
 
         ROS_INFO("Is Backtrack: %d", isBacktracking);
@@ -36,7 +36,11 @@ namespace Reaction
             Control::reset_time();
             uint8_t direction;
             uint8_t bumpers = sensors.BUMPER;
-            direction = bumpers && 1;
+            uint8_t cliff = sensors.CLIFF;
+
+            // Bumpers take precedence
+            if (bumpers) direction = bumpers && 1;
+            else if (cliff) direction = cliff && 1;
 
             next_state = backtrack(&reaction, direction, current_time);
         }
@@ -123,7 +127,7 @@ namespace Reaction
                 reaction->velocity = vel;
                 reaction->angular = ang;
                 reaction->sound = sound;
-                
+
                 return Backtrack;
             }
         }
