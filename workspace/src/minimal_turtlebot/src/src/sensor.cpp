@@ -14,6 +14,13 @@ namespace Sensor {
         uint8_t bumper = check_bumpers(inputs);
         uint8_t wheels = check_wheels(inputs);
         uint8_t cliff = check_cliff(inputs);
+
+        SENSOR_STATES * state = new SENSOR_STATES();
+        state->BUMPER = bumper;
+        state->WHEEL = wheels;
+        state->CLIFF = cliff;
+
+        return * state;
     }
 
     /**
