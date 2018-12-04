@@ -9,7 +9,7 @@ namespace Control
 {
     long start_time;
     turtlebotInputs current;
-    
+
     Turtlebot_Reaction refresh (turtlebotInputs inputs)
     {
         current = inputs;
