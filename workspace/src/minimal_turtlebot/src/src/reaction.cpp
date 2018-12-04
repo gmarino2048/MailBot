@@ -39,7 +39,7 @@ namespace Reaction
             uint8_t bumpers = sensors.BUMPER;
             direction = bumpers && 1;
 
-            backtrack(&reaction, direction, current_time);
+            next_state = backtrack(&reaction, direction, current_time);
         }
         
 
