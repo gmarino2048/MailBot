@@ -19,7 +19,7 @@ namespace Reaction
         
         // Next check for bumper input
         bool shouldBacktrack = !running && sensors.BUMPER != 0;
-        bool isBacktracking = current_state == Backtrack;
+        bool isBacktracking = current_reaction == Backtrack;
 
         if (isBacktracking) next_state = backtrack(&reaction, -1, current_time);
         else if (shouldBacktrack) 
