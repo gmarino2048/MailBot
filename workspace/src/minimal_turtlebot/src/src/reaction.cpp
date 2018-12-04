@@ -82,6 +82,7 @@ namespace Reaction
         if (current_time < 1e9)
         {
             Movement::halt(&vel, &ang);
+            ROS_INFO("Still");
             return Backtrack;
         }
         // Reverse for 2s
@@ -89,6 +90,7 @@ namespace Reaction
         {
             Movement::halt(&vel, &ang);
             Movement::reverse(&vel, Control::velocity);
+            ROS_INFO("Reverse");
             return Backtrack;
         }
         // Turn for  3s
