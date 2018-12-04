@@ -28,8 +28,7 @@ namespace Reaction
         bool shouldBacktrack = !running && sensors.BUMPER != 0;
         bool isBacktracking = current_reaction == Backtrack;
 
-        ROS_INFO("Should Backtrack: %d", shouldBacktrack);
-        ROS_INFO("Running: %d", running);
+        ROS_INFO("Is Backtrack: %d", isBacktracking);
 
         if (isBacktracking) next_state = backtrack(&reaction, -1, current_time);
         else if (shouldBacktrack) 
