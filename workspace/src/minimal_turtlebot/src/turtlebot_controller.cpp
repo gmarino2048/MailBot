@@ -87,7 +87,7 @@ void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue,
 			break;
 	}*/
 
-	std::cout << "Running\n";
+	ROS_INFO("Running\n");
 
 	Reaction::Turtlebot_Reaction reaction = Control::refresh(turtlebot_inputs);
 	
