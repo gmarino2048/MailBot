@@ -83,6 +83,10 @@ namespace Reaction
         {
             Movement::halt(&vel, &ang);
             ROS_INFO("Still");
+            reaction->velocity = vel;
+            reaction->angular = ang;
+            reaction->sound = sound;
+
             return Backtrack;
         }
         // Reverse for 2s
@@ -91,6 +95,11 @@ namespace Reaction
             Movement::halt(&vel, &ang);
             Movement::reverse(&vel, Control::velocity);
             ROS_INFO("Velocity: %f", vel);
+
+            reaction->velocity = vel;
+            reaction->angular = ang;
+            reaction->sound = sound;
+
             return Backtrack;
         }
         // Turn for  3s
@@ -100,12 +109,21 @@ namespace Reaction
             {
                 Movement::halt(&vel, &ang);
                 Movement::right_turn(&ang, Control::angular);
+
+                reaction->velocity = vel;
+                reaction->angular = ang;
+                reaction->sound = sound;
                 return Backtrack;
             }
             else 
             {
                 Movement::halt(&vel, &ang);
                 Movement::left_turn(&ang, Control::angular);
+
+                reaction->velocity = vel;
+                reaction->angular = ang;
+                reaction->sound = sound;
+                
                 return Backtrack;
             }
         }
