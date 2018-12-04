@@ -87,8 +87,6 @@ void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue,
 			break;
 	}*/
 
-	ROS_INFO("Running\n");
-
 	Reaction::Turtlebot_Reaction reaction = Control::refresh(turtlebot_inputs);
 	
 	*vel = reaction.velocity;
