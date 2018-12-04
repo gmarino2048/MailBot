@@ -15,9 +15,13 @@ namespace Reaction
         uint8_t next_state = Default;
         Turtlebot_Reaction reaction;
 
+        ROS_INFO("Default: %d", next_state);
+
         // State machine should always stop if lifted
         if (sensors.WHEEL != 0)
         {
+            ROS_INFO("Wheel Drop: %d", sensors.WHEEL);
+
             Control::reset_time();
             next_state = stop_error(&reaction, current_time);
         }
@@ -50,8 +54,6 @@ namespace Reaction
             Movement::halt(&reaction.velocity, &reaction.angular);
             Movement::advance(&reaction.velocity, Control::velocity);
         }
-        
-        ROS_INFO("Next state %d", next_state);
 
         return reaction;
     }
