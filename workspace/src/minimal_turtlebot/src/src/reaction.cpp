@@ -43,7 +43,7 @@ namespace Reaction
         {
             Control::reset_time();
             Movement::halt(&reaction.velocity, &reaction.angular);
-            Movement::advance(&reaction.velocity, &reaction.angular);
+            Movement::advance(&reaction.velocity, Control::velocity);
         }
 
         return reaction;
@@ -70,20 +70,20 @@ namespace Reaction
         reaction->sound = sound;
 
         // Stop for 1s
-        if (time < 1e9)
+        if (current_time < 1e9)
         {
             Movement::halt(&vel, &ang);
             return Backtrack;
         }
         // Reverse for 2s
-        if (time < 3e9)
+        if (current_time < 3e9)
         {
             Movement::halt(&vel, &ang);
             Movement::reverse(&vel, Control::velocity);
             return Backtrack;
         }
         // Turn for  3s
-        if (time < 6e9)
+        if (current_time < 6e9)
         {
             if (direction)
             {
