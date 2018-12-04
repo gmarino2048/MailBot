@@ -3,9 +3,11 @@
 #include "../lib/reaction.hpp"
 #include "../../include/minimal_turtlebot/turtlebot_controller.h"
 
+using namespace Reaction;
+
 namespace Control
 {
-    Reaction::Turtlebot_Reaction refresh (turtlebotInputs inputs)
+    Turtlebot_Reaction refresh (turtlebotInputs inputs)
     {
         current = inputs;
         Sensor::SENSOR_STATES states = Sensor::set_sensor_state(current);
