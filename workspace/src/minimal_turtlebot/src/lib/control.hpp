@@ -12,7 +12,7 @@ namespace Control
     const float velocity = 0.3f;
     const float angular = 0.2f;
 
-    Reaction::TurtlebotInputs current;
+    turtlebotInputs current;
 
     Reaction::Turtlebot_Reaction refresh (turtlebotInputs inputs);
     
