@@ -29,7 +29,7 @@ namespace Reaction
         bool isBacktracking = current_reaction == Backtrack;
 
         ROS_INFO("Should Backtrack: %d", shouldBacktrack);
-        ROS_INFO("Running: &d", running);
+        ROS_INFO("Running: %d", running);
 
         if (isBacktracking) next_state = backtrack(&reaction, -1, current_time);
         else if (shouldBacktrack) 
