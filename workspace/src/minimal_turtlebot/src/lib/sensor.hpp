@@ -11,11 +11,11 @@ namespace Sensor {
 
     void set_sensor_state (turtlebotInputs sensor_inputs);
 
-    bool check_bumpers (turtlebotInputs inputs);
-    bool check_wheels (turtlebotInputs inputs);
-    bool check_cliff (turtlebotInputs inputs);
-    bool check_laserscan (turtlebotInputs inputs);
-    bool check_imu (turtlebotInputs inputs);
+    uint8_t check_bumpers (turtlebotInputs inputs);
+    uint8_t check_wheels (turtlebotInputs inputs);
+    uint8_t check_cliff (turtlebotInputs inputs);
+    float check_laserscan (turtlebotInputs inputs);
+    float check_imu (turtlebotInputs inputs);
 };
 
 #endif

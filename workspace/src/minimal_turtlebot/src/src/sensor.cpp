@@ -18,9 +18,10 @@ namespace Sensor {
         return &current_state;
     }
 
-    void set_sensor_state (turtlebotInputs inputs) {
-        bool bumper = check_bumpers(inputs);
-        bool wheels = check_wheels(inputs);
+    SENSOR_STATES set_sensor_state (turtlebotInputs inputs) {
+        uint8_t bumper = check_bumpers(inputs);
+        uint8_t wheels = check_wheels(inputs);
+        uint8_t cliff = check_cliff(inuputs);
     }
 
     /**
@@ -51,7 +52,7 @@ namespace Sensor {
      * uint8_t structure. If LSB is hot, then right wheel has
      * dropped, if LSB2 is hot, then left wheel has dropped.
      */
-    bool check_wheels (turtlebotInputs inputs){
+    uint8_t check_wheels (turtlebotInputs inputs){
         uint8_t value = 0;
 
         if (inputs.rightWheelDropped){
@@ -70,7 +71,7 @@ namespace Sensor {
      * if sensor 1 is triggered, then LSB2 is hot. If sensor 2
      * is triggered, then LSB3 is hot.
      */
-    bool check_cliff (turtlebotInputs inputs) {
+    uint8_t check_cliff (turtlebotInputs inputs) {
         uint8_t value = 0;
 
         if (inputs.sensor0State){
@@ -84,11 +85,11 @@ namespace Sensor {
         }
     }
  
-    bool check_laserscan (turtlebotInputs inputs) {
+    float check_laserscan (turtlebotInputs inputs) {
         
     }
 
-    bool check_imu (turtlebotInputs inputs) {
+    float check_imu (turtlebotInputs inputs) {
 
     }
 }

@@ -1,11 +1,25 @@
-#ifndef _reaction_h
-#define _reaction_h
+#include<stdint.h>
+#include "../lib/sensor.hpp"
+#include "../lib/control.hpp"
 
-#include "sensor.hpp"
-#include "../../include/minimal_turtlebot/turtlebot_controller.h"
+namespace Reaction 
+{
+    struct Turtlebot_Reaction;
 
-namespace Reaction {
-    
+    enum ReactionStates 
+    {
+        Default = 0,
+        Backtrack = 1,
+        Stop_Error = 2,
+        Avoid_Obstacle = 3
+    }
+
+    bool running;
+    uint8_t current_reaction;
+
+    Turtlebot_Reaction run_reaction (SENSOR_STATES sensors, long current_time);
+
+    uint8_t backtrack (Turtlebot_Reaction * reaction, uint8_t direction, long current_time);
+    uint8_t stop_error (Turtlebot_Reaction * reaction, long current_time);
+    uint8_t avoid_obstacle (Turtlebot_Reaction * reaction, long current_time);
 }
-
-#endif
