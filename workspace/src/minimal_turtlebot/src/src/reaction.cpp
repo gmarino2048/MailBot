@@ -31,7 +31,11 @@ namespace Reaction
         else if (shouldBacktrack) 
         {
             Control::reset_time();
-            
+            uint8_t direction;
+            uint8_t bumpers = sensors.BUMPER;
+            direction = bumpers && 1;
+
+            backtrack(&reaction, direction, current_time);
         }
         
 
@@ -105,7 +109,15 @@ namespace Reaction
 
     uint8_t stop_error (Turtlebot_Reaction * reaction, long current_time)
     {
+        float vel = 0;
+        float ang = 0;
+        uint8_t sound = 4;
 
+        reaction->velocity = vel;
+        reaction->angular = ang;
+        reaciton->sound = sound;
+
+        return Stop_Error;
     }
     uint8_t avoid_obstacle (Turtlebot_Reaction * reaction, long current_time)
     {
