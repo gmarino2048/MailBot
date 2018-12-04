@@ -7,7 +7,12 @@
 
 namespace Reaction 
 {
-    struct Turtlebot_Reaction;
+    struct Turtlebot_Reaction 
+    {
+        float velocity;
+        float angular;
+        uint8_t sound;
+    };
 
     enum ReactionStates 
     {

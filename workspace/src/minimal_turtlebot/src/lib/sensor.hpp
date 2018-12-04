@@ -5,7 +5,13 @@
 #include "../../include/minimal_turtlebot/turtlebot_controller.h"
 
 namespace Sensor {
-    struct SENSOR_STATES;
+    struct SENSOR_STATES {
+        uint8_t BUMPER;
+        uint8_t WHEEL;
+        uint8_t CLIFF;
+        uint8_t LASERSCAN;
+        uint8_t IMU;
+    };
 
     SENSOR_STATES * get_sensor_state ();
 
