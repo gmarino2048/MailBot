@@ -20,6 +20,8 @@ namespace Sensor {
         state->WHEEL = wheels;
         state->CLIFF = cliff;
 
+        ROS_INFO("Bumper: %d", state->BUMPER);
+
         return * state;
     }
 
@@ -53,8 +55,6 @@ namespace Sensor {
      */
     uint8_t check_wheels (turtlebotInputs inputs){
         uint8_t value = 0;
-
-        ROS_INFO("Right wheel: %d Left wheel: %d", inputs.rightWheelDropped, inputs.leftWheelDropped);
 
         if (inputs.rightWheelDropped){
             value += 0b00000001;
