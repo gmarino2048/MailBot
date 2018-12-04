@@ -4,7 +4,6 @@
 
 namespace Reaction 
 {
-
     Turtlebot_Reaction run_reaction (Sensor::SENSOR_STATES sensors, long current_time)
     {
         uint8_t next_state = Default;
@@ -114,6 +113,7 @@ namespace Reaction
 
         return Stop_Error;
     }
+
     uint8_t avoid_obstacle (Turtlebot_Reaction * reaction, long current_time)
     {
 
