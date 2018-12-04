@@ -110,7 +110,7 @@ namespace Reaction
 
         reaction->velocity = vel;
         reaction->angular = ang;
-        reaciton->sound = sound;
+        reaction->sound = sound;
 
         return Stop_Error;
     }
