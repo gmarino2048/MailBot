@@ -1,5 +1,6 @@
 #include "../lib/control.hpp"
 #include "../lib/sensor.hpp"
+#include "../lib/reaction.hpp"
 #include "../../include/minimal_turtlebot/turtlebot_controller.h"
 
 namespace Control
