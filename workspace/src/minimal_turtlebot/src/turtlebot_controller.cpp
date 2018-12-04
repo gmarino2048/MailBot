@@ -1,7 +1,7 @@
 #include "../include/minimal_turtlebot/turtlebot_controller.h"
 #include "./lib/reaction.hpp"
 #include "./lib/control.hpp"
-
+#include <iostream>
 
 // Define the movement constants
 #define VEL 0.1
@@ -86,6 +86,8 @@ void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue,
 			}
 			break;
 	}*/
+
+	std::cout << "Running\n";
 
 	Reaction::Turtlebot_Reaction reaction = Control::refresh(turtlebot_inputs);
 	

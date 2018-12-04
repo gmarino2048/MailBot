@@ -2,7 +2,7 @@
 #include "../lib/control.hpp"
 #include "../lib/movement.hpp"
 
-#include <stdio.h>
+#include <iostream>
 
 namespace Reaction 
 {
@@ -15,7 +15,7 @@ namespace Reaction
         uint8_t next_state = Default;
         Turtlebot_Reaction reaction;
 
-        printf(current_time);
+        std::cout << current_time;
 
         // State machine should always stop if lifted
         if (sensors.WHEEL != 0)
