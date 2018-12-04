@@ -3,7 +3,6 @@
 
 #include <stdint.h>
 #include "sensor.hpp"
-#include "control.hpp"
 
 namespace Reaction 
 {
