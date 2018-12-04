@@ -5,6 +5,8 @@
 #include "sensor.hpp"
 #include "../../include/minimal_turtlebot/turtlebot_controller.h"
 
+using namespace Reaction;
+
 namespace Control 
 {
     long start_time;
@@ -14,7 +16,7 @@ namespace Control
 
     turtlebotInputs current;
 
-    Reaction::Turtlebot_Reaction refresh (turtlebotInputs inputs);
+    Turtlebot_Reaction refresh (turtlebotInputs inputs);
     
     void reset_time ();
     long current_time ();
