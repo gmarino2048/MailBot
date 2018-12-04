@@ -89,9 +89,9 @@ void turtlebot_controller(turtlebotInputs turtlebot_inputs, uint8_t *soundValue,
 
 	ROS_INFO("Running\n");
 
-	/*Reaction::Turtlebot_Reaction reaction = Control::refresh(turtlebot_inputs);
+	Reaction::Turtlebot_Reaction reaction = Control::refresh(turtlebot_inputs);
 	
 	*vel = reaction.velocity;
 	*ang_vel = reaction.angular;
-	*soundValue = reaction.sound;*/
+	*soundValue = reaction.sound;
 }
