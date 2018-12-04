@@ -9,7 +9,7 @@ namespace Reaction
         float velocity;
         float angular;
         uint8_t sound;
-    }
+    };
 
     Turtlebot_Reaction run_reaction (Sensor::SENSOR_STATES sensors, long current_time)
     {

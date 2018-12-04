@@ -21,7 +21,7 @@ namespace Sensor {
     SENSOR_STATES set_sensor_state (turtlebotInputs inputs) {
         uint8_t bumper = check_bumpers(inputs);
         uint8_t wheels = check_wheels(inputs);
-        uint8_t cliff = check_cliff(inuputs);
+        uint8_t cliff = check_cliff(inputs);
     }
 
     /**

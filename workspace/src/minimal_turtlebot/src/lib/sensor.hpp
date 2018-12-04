@@ -9,7 +9,7 @@ namespace Sensor {
 
     SENSOR_STATES * get_sensor_state ();
 
-    void set_sensor_state (turtlebotInputs sensor_inputs);
+    SENSOR_STATES set_sensor_state (turtlebotInputs sensor_inputs);
 
     uint8_t check_bumpers (turtlebotInputs inputs);
     uint8_t check_wheels (turtlebotInputs inputs);
