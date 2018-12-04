@@ -2,7 +2,7 @@
 #include "../lib/control.hpp"
 #include "../lib/movement.hpp"
 
-#include <iostream>
+#include <stdio.h>
 
 namespace Reaction 
 {
