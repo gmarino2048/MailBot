@@ -1,3 +1,6 @@
+#ifndef _control_h
+#define _control_h
+
 #include "reaction.hpp"
 #include "sensor.hpp"
 #include "../../include/minimal_turtlebot/turtlebot_controller.h"
@@ -16,3 +19,5 @@ namespace Control
     void reset_time ();
     long current_time ();
 }
+
+#endif

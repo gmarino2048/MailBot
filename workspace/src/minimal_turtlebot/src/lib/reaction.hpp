@@ -1,6 +1,9 @@
+#ifndef _reaction_h
+#define _reaction_h
+
 #include<stdint.h>
-#include "../lib/sensor.hpp"
-#include "../lib/control.hpp"
+#include "sensor.hpp"
+#include "control.hpp"
 
 namespace Reaction 
 {
@@ -23,3 +26,4 @@ namespace Reaction
     uint8_t stop_error (Turtlebot_Reaction * reaction, long current_time);
     uint8_t avoid_obstacle (Turtlebot_Reaction * reaction, long current_time);
 }
+#endif
