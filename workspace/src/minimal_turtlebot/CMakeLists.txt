@@ -128,7 +128,14 @@ include_directories(
 # add_dependencies(minimal_turtlebot ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-add_executable(minimal_turtlebot src/minimal_turtlebot.cpp src/turtlebot_controller.cpp src/)
+add_executable(minimal_turtlebot 
+  src/minimal_turtlebot.cpp 
+  src/turtlebot_controller.cpp 
+  src/src/sensor.cpp 
+  src/src/movement.cpp 
+  src/src/reaction.cpp 
+  src/src/control.cpp
+)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above

@@ -47,6 +47,7 @@ namespace Reaction
         // Last! If the robot shouldn't be doing anything else... keep advancing
         if (current_reaction == Default)
         {
+            Control::reset_time();
             Movement::halt(&reaction.velocity, &reaction.angular);
             Movement::advance(&reaction.velocity, &reaction.angular);
         }

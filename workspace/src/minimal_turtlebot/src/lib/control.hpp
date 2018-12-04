@@ -9,9 +9,9 @@ namespace Control
     const float velocity = 0.3f;
     const float angular = 0.2f;
 
-    TurtlebotInputs current;
+    Reaction::TurtlebotInputs current;
 
-    Turtlebot_Reaction refresh (turtlebotInputs inputs);
+    Reaction::Turtlebot_Reaction refresh (turtlebotInputs inputs);
     
     void reset_time ();
     long current_time ();
