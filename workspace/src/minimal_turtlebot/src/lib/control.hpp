@@ -9,12 +9,12 @@ using namespace Reaction;
 
 namespace Control 
 {
-    long start_time;
+    extern long start_time;
 
     const float velocity = 0.3f;
     const float angular = 0.2f;
 
-    turtlebotInputs current;
+    extern turtlebotInputs current;
 
     Turtlebot_Reaction refresh (turtlebotInputs inputs);
     

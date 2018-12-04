@@ -21,8 +21,8 @@ namespace Reaction
         Avoid_Obstacle = 3
     };
 
-    bool running;
-    uint8_t current_reaction;
+    extern bool running;
+    extern uint8_t current_reaction;
 
     Turtlebot_Reaction run_reaction (Sensor::SENSOR_STATES sensors, long current_time);
 
