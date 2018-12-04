@@ -4,6 +4,10 @@
 
 namespace Reaction 
 {
+
+    bool running;
+    uint8_t current_reaction;
+
     Turtlebot_Reaction run_reaction (Sensor::SENSOR_STATES sensors, long current_time)
     {
         uint8_t next_state = Default;
