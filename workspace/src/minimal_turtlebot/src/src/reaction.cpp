@@ -79,7 +79,7 @@ namespace Reaction
         if (time < 3e9)
         {
             Movement::halt(&vel, &ang);
-            Movement::reverse(&vel, &ang);
+            Movement::reverse(&vel, Control::velocity);
             return Backtrack;
         }
         // Turn for  3s
@@ -88,13 +88,13 @@ namespace Reaction
             if (direction)
             {
                 Movement::halt(&vel, &ang);
-                Movement::right_turn(&vel, &ang);
+                Movement::right_turn(&ang, Control::angular);
                 return Backtrack;
             }
             else 
             {
                 Movement::halt(&vel, &ang);
-                Movement::left_turn(&vel, &ang);
+                Movement::left_turn(&ang, Control::angular);
                 return Backtrack;
             }
         }
