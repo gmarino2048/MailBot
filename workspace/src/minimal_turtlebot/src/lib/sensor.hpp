@@ -10,7 +10,8 @@ namespace Sensor {
         uint8_t WHEEL;
         uint8_t CLIFF;
         uint8_t LASERSCAN;
-        uint8_t IMU;
+        float LASERSCAN_ANGLE;
+        float LASERSCAN_DISTANCE;
     };
 
     SENSOR_STATES * get_sensor_state ();
@@ -20,8 +21,7 @@ namespace Sensor {
     uint8_t check_bumpers (turtlebotInputs inputs);
     uint8_t check_wheels (turtlebotInputs inputs);
     uint8_t check_cliff (turtlebotInputs inputs);
-    float check_laserscan (turtlebotInputs inputs);
-    float check_imu (turtlebotInputs inputs);
+    float check_laserscan (turtlebotInputs inputs, SENSOR_STATES * sensors);
 };
 
 #endif

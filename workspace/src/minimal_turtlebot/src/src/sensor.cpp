@@ -86,8 +86,31 @@ namespace Sensor {
         }
     }
  
-    float check_laserscan (turtlebotInputs inputs) {
-        
+    float check_laserscan (turtlebotInputs inputs, SENSOR_STATES * sensors) {
+        float fov = 57.0f;
+        float delta = 57.0f/640.0f;
+
+        int min = 0;
+        float min_val = 1000f;
+        for (int i = 0; i < 640; i++)
+        {
+            float distance = inputs.ranges[i];
+            if (distance < min_val)
+            {
+                min = i;
+                min_val = distance;
+            }
+        }
+
+        float theta = ((float)min - 640f) * delta;
+
+        if (min_val < 0.5f)
+        {
+            sensors -> LASERSCAN = 1;
+            sensors -> LASERSCAN_ANGLE = theta;
+            sensors -> LASERSCAN_DISTANCE = min_val;
+        }
+        else sensors -> LASERSCAN = 0;
     }
 
     float check_imu (turtlebotInputs inputs) {

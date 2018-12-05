@@ -28,6 +28,6 @@ namespace Reaction
 
     uint8_t backtrack (Turtlebot_Reaction * reaction, uint8_t direction, long current_time);
     uint8_t stop_error (Turtlebot_Reaction * reaction, long current_time);
-    uint8_t avoid_obstacle (Turtlebot_Reaction * reaction, long current_time);
+    uint8_t avoid_obstacle (Turtlebot_Reaction * reaction, uint8_t direction, long current_time);
 }
 #endif
