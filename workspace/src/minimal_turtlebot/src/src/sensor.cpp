@@ -25,8 +25,6 @@ namespace Sensor {
 
         check_laserscan(inputs, state);
 
-        ROS_INFO("Dist: %f, Ang: %f", state->LASERSCAN_DISTANCE, state->LASERSCAN_ANGLE);
-
         return * state;
     }
 
@@ -102,6 +100,7 @@ namespace Sensor {
         {
             float distance = inputs.ranges[i];
             if (std::isnan(distance)) distance = max_dist;
+            ROS_INFO("%f", distance);
             if (distance < min_val)
             {
                 min = i;
