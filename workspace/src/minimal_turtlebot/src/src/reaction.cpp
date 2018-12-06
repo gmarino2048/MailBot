@@ -182,7 +182,7 @@ namespace Reaction
         float ang;
         uint8_t sound = 7;
 
-        halt(&vel, &ang);
+        Movement::halt(&vel, &ang);
         sound = 2;
 
         if (current_time < 15e9)
@@ -191,7 +191,7 @@ namespace Reaction
             reaction->angular = ang;
             reaction->sound = sound;
 
-            return Avoid_Obstacle
+            return Avoid_Obstacle;
         }
 
         if (sensors->LASERSCAN_DISTANCE < 0.5f)

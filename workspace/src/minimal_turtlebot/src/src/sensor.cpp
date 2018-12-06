@@ -91,7 +91,7 @@ namespace Sensor {
         float delta = 57.0f/640.0f;
 
         int min = 0;
-        float min_val = 1000f;
+        float min_val = 1000.0f;
         for (int i = 0; i < 640; i++)
         {
             float distance = inputs.ranges[i];
@@ -102,7 +102,7 @@ namespace Sensor {
             }
         }
 
-        float theta = ((float)min - 640f) * delta;
+        float theta = ((float)min - 640.0f) * delta;
 
         if (min_val < 0.5f)
         {
