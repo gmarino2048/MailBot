@@ -209,7 +209,7 @@ namespace Reaction
             reaction -> angular = ang;
             reaction -> sound = sound;
 
-            ROS_INFO("Turning: %ld", current_time);
+            ROS_INFO("Distance: %f", sensors->LASERSCAN_DISTANCE);
 
             return Avoid_Obstacle;
         }
