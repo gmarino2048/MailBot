@@ -20,7 +20,7 @@ namespace Sensor {
         state->WHEEL = wheels;
         state->CLIFF = cliff;
 
-        ROS_INFO("Bumper: %d", state->BUMPER);
+        check_laserscan(inputs, state);
 
         return * state;
     }
@@ -86,7 +86,7 @@ namespace Sensor {
         }
     }
  
-    float check_laserscan (turtlebotInputs inputs, SENSOR_STATES * sensors) {
+    void check_laserscan (turtlebotInputs inputs, SENSOR_STATES * sensors) {
         float fov = 57.0f;
         float delta = 57.0f/640.0f;
 

@@ -114,7 +114,6 @@ namespace Reaction
         if (current_time < 1e9)
         {
             Movement::halt(&vel, &ang);
-            ROS_INFO("Still");
             reaction->velocity = vel;
             reaction->angular = ang;
             reaction->sound = sound;
@@ -126,7 +125,6 @@ namespace Reaction
         {
             Movement::halt(&vel, &ang);
             Movement::reverse(&vel, Control::velocity);
-            ROS_INFO("Velocity: %f", vel);
 
             reaction->velocity = vel;
             reaction->angular = ang;
