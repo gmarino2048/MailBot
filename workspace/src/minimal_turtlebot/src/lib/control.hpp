@@ -12,7 +12,7 @@ namespace Control
     extern long start_time;
 
     const float velocity = 0.3f;
-    const float angular = 0.2f;
+    const float angular = 0.7f;
 
     extern turtlebotInputs current;
 

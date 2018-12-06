@@ -110,8 +110,8 @@ namespace Sensor {
         float theta = ((float)min - 640.0f) * delta;
 
 
-        ROS_INFO("min_val: %f", min_val);
-        
+        ROS_INFO("theta: %f", theta);
+
         sensors->LASERSCAN_ANGLE = theta;
         sensors->LASERSCAN_DISTANCE = min_val;
     }
