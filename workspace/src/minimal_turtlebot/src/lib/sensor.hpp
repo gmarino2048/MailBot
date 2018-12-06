@@ -21,7 +21,7 @@ namespace Sensor {
     uint8_t check_bumpers (turtlebotInputs inputs);
     uint8_t check_wheels (turtlebotInputs inputs);
     uint8_t check_cliff (turtlebotInputs inputs);
-    float check_laserscan (turtlebotInputs inputs, SENSOR_STATES * sensors);
+    void check_laserscan (turtlebotInputs inputs, SENSOR_STATES * sensors);
 };
 
 #endif
