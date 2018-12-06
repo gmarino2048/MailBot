@@ -195,7 +195,7 @@ namespace Reaction
             reaction->angular = ang;
             reaction->sound = sound;
 
-            ROS_INFO("Waiting: %d", current_time);
+            ROS_INFO("Waiting: %ld", current_time);
             return Avoid_Obstacle;
         }
 
@@ -209,7 +209,7 @@ namespace Reaction
             reaction -> angular = ang;
             reaction -> sound = sound;
 
-            ROS_INFO("Turning: %d", current_time);
+            ROS_INFO("Turning: %ld", current_time);
 
             return Avoid_Obstacle;
         }
