@@ -9,7 +9,7 @@ namespace Reaction
 {
 
     float MAX_ANG_VEL = 1;
-    float MAX_ANGLE = 28.5;
+    float MAX_ANGLE = 28.5f;
 
     bool running;
     uint8_t current_reaction;
@@ -77,10 +77,16 @@ namespace Reaction
                 bool direction = sensors.LASERSCAN_ANGLE > 0;
                 ang = MAX_ANG_VEL;
 
-                float dist_scale = 1 - (2 * sensors.LASERSCAN_DISTANCE);
-                float angle_scale = -1 * (1 - (sensors.LASERSCAN_ANGLE / MAX_ANGLE));
+                ROS_INFO("theta: %f, distance: %f", sensors.LASERSCAN_ANGLE, sensors.LASERSCAN_DISTANCE);
 
-                ang = ang * dist_scale * angle_scale;
+                float direction;
+                if (sensors.LASERSCAN_ANGLE < 0) direction = -1.0f;
+                else direction = 1.0f;
+
+                float dist_scale = 1 - (2 * sensors.LASERSCAN_DISTANCE);
+                float angle_scale = (1 - (abs(sensors.LASERSCAN_ANGLE) / MAX_ANGLE));
+
+                ang = ang * direction * dist_scale * angle_scale;
             }
             else ang = 0;
 
