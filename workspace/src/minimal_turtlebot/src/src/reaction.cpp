@@ -189,12 +189,13 @@ namespace Reaction
         Movement::halt(&vel, &ang);
         sound = 2;
 
-        if (current_time < 15e9)
+        if (current_time < 3e9)
         {
             reaction->velocity = vel;
             reaction->angular = ang;
             reaction->sound = sound;
 
+            ROS_INFO("Waiting: %d", current_time);
             return Avoid_Obstacle;
         }
 
@@ -207,6 +208,8 @@ namespace Reaction
             reaction -> velocity = vel;
             reaction -> angular = ang;
             reaction -> sound = sound;
+
+            ROS_INFO("Turning: %d", current_time);
 
             return Avoid_Obstacle;
         }
