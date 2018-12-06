@@ -22,7 +22,7 @@ namespace Sensor {
 
         check_laserscan(inputs, state);
 
-        ROSINFO("Dist: %f, Ang: %f", state->LASERSCAN_DISTANCE, state->LASERSCAN_ANGLE);
+        ROS_INFO("Dist: %f, Ang: %f", state->LASERSCAN_DISTANCE, state->LASERSCAN_ANGLE);
 
         return * state;
     }
