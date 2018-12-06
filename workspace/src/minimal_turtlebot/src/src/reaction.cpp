@@ -2,10 +2,14 @@
 #include "../lib/control.hpp"
 #include "../lib/movement.hpp"
 
+#include <math.h>
 #include <iostream>
 
 namespace Reaction 
 {
+
+    float MAX_ANG_VEL = 1;
+    float MAX_ANGLE = 28.5;
 
     bool running;
     uint8_t current_reaction;
@@ -22,6 +26,16 @@ namespace Reaction
 
             Control::reset_time();
             next_state = stop_error(&reaction, current_time);
+        }
+
+        bool shouldAvoid = sensors.LASERSCAN_DISTANCE < 0.5f;
+        bool isAvoiding = next_state == Avoid_Obstacle;
+
+        if (isAvoiding) next_state = avoid_obstacle(&reaction, &sensors, current_time);
+        if (shouldAvoid)
+        {
+            Control::reset_time();
+            next_state = avoid_obstacle(&reaction, &sensors, current_time);
         }
         
         // Next check for bumper input
@@ -55,6 +69,22 @@ namespace Reaction
             Control::reset_time();
             Movement::halt(&reaction.velocity, &reaction.angular);
             Movement::advance(&reaction.velocity, Control::velocity);
+
+            // Object avoidance without stopping
+            float ang;
+            if (sensors.LASERSCAN_DISTANCE < 1)
+            {
+                bool direction = sensors.LASERSCAN_ANGLE > 0;
+                ang = MAX_ANG_VEL;
+
+                float dist_scale = 1 - (2 * sensors.LASERSCAN_DISTANCE);
+                float angle_scale = -1 * (1 - (sensors.LASERSCAN_ANGLE / MAX_ANGLE));
+
+                ang = ang * dist_scale * angle_scale;
+            }
+            else ang = 0;
+
+            reaction.angular = ang;
         }
 
         return reaction;
@@ -146,8 +176,36 @@ namespace Reaction
         return Stop_Error;
     }
 
-    uint8_t avoid_obstacle (Turtlebot_Reaction * reaction, long current_time)
+    uint8_t avoid_obstacle (Turtlebot_Reaction * reaction, Sensor::SENSOR_STATES * sensors, long current_time)
     {
+        float vel;
+        float ang;
+        uint8_t sound = 7;
 
+        halt(&vel, &ang);
+        sound = 2;
+
+        if (current_time < 15e9)
+        {
+            reaction->velocity = vel;
+            reaction->angular = ang;
+            reaction->sound = sound;
+
+            return Avoid_Obstacle
+        }
+
+        if (sensors->LASERSCAN_DISTANCE < 0.5f)
+        {
+            vel = 0;
+            ang = Control::angular;
+            sound = 7;
+
+            reaction -> velocity = vel;
+            reaction -> angular = ang;
+            reaction -> sound = sound;
+
+            return Avoid_Obstacle;
+        }
+        else return Default;
     }
 }
