@@ -37,7 +37,7 @@ namespace Reaction
         else if (shouldAvoid)
         {
             Control::reset_time();
-            next_state = avoid_obstacle(&reaction, &sensors, current_time);
+            next_state = avoid_obstacle(&reaction, &sensors, 0);
         }
         
         // Next check for bumper input
@@ -56,7 +56,7 @@ namespace Reaction
             if (bumpers) direction = bumpers && 1;
             else if (cliff) direction = cliff && 1;
 
-            next_state = backtrack(&reaction, direction, current_time);
+            next_state = backtrack(&reaction, direction, 0);
         }
         
 
