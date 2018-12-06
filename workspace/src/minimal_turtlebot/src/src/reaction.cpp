@@ -32,7 +32,7 @@ namespace Reaction
         bool isAvoiding = current_reaction == Avoid_Obstacle;
 
         if (isAvoiding) next_state = avoid_obstacle(&reaction, &sensors, current_time);
-        if (shouldAvoid)
+        else if (shouldAvoid)
         {
             Control::reset_time();
             next_state = avoid_obstacle(&reaction, &sensors, current_time);
