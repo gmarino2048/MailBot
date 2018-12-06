@@ -34,7 +34,7 @@ namespace Reaction
         bool isAvoiding = current_reaction == Avoid_Obstacle;
 
         if (isAvoiding) next_state = avoid_obstacle(&reaction, &sensors, current_time);
-        else if (shouldAvoid)
+        else if (shouldAvoid && current_reaction == Default)
         {
             Control::reset_time();
             next_state = avoid_obstacle(&reaction, &sensors, 0);
@@ -45,7 +45,7 @@ namespace Reaction
         bool isBacktracking = current_reaction == Backtrack;
 
         if (isBacktracking) next_state = backtrack(&reaction, -1, current_time);
-        else if (shouldBacktrack) 
+        else if (shouldBacktrack && current_reaction == Default) 
         {
             Control::reset_time();
             uint8_t direction;
@@ -78,8 +78,6 @@ namespace Reaction
             {
                 bool direction = sensors.LASERSCAN_ANGLE > 0;
                 ang = MAX_ANG_VEL;
-
-                ROS_INFO("theta: %f, distance: %f", sensors.LASERSCAN_ANGLE, sensors.LASERSCAN_DISTANCE);
 
                 float turn;
                 if (sensors.LASERSCAN_ANGLE < 0) turn = 1.0f;
@@ -198,8 +196,6 @@ namespace Reaction
             reaction->angular = ang;
             reaction->sound = sound;
 
-            ROS_INFO("Waiting: %ld", current_time);
-
             if (sensors->LASERSCAN_ANGLE > 0) direction = -1.0f;
             else direction = 1.0f;
 
@@ -215,8 +211,6 @@ namespace Reaction
             reaction -> velocity = vel;
             reaction -> angular = ang;
             reaction -> sound = sound;
-
-            ROS_INFO("Distance: %f", sensors->LASERSCAN_DISTANCE);
 
             return Avoid_Obstacle;
         }
