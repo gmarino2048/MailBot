@@ -2,6 +2,8 @@
 #include "../lib/sensor.hpp"
 #include "../../include/minimal_turtlebot/turtlebot_controller.h"
 
+#include <math.h>
+
 namespace Sensor {
 
     SENSOR_STATES current_state;
@@ -93,10 +95,12 @@ namespace Sensor {
         float delta = 57.0f/640.0f;
 
         int min = 0;
-        float min_val = 1000.0f;
+        float max_dist = 1000.0f
+        float min_val = max_dist;
         for (int i = 0; i < 640; i++)
         {
             float distance = inputs.ranges[i];
+            if (distance == NAN) distance = max_dist;
             if (distance < min_val)
             {
                 min = i;
