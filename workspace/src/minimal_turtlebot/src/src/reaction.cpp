@@ -108,7 +108,7 @@ namespace Reaction
         uint8_t sound = 7;
 
         // Reset Direction
-        if (direction < 0) direction = current_direction;
+        if (direction == 255) direction = current_direction;
         else current_direction == direction;
 
         ROS_INFO("Direction: %d", direction);
