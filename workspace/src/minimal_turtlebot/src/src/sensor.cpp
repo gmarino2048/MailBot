@@ -3,6 +3,7 @@
 #include "../../include/minimal_turtlebot/turtlebot_controller.h"
 
 #include <math.h>
+#include <cmath>
 
 namespace Sensor {
 
@@ -24,7 +25,7 @@ namespace Sensor {
 
         check_laserscan(inputs, state);
 
-        ROS_INFO("Dist: %f, Ang: %f", inputs.ranges[320], state->LASERSCAN_ANGLE);
+        ROS_INFO("Dist: %f, Ang: %f", state->LASERSCAN_DISTANCE, state->LASERSCAN_ANGLE);
 
         return * state;
     }
@@ -100,7 +101,7 @@ namespace Sensor {
         for (int i = 0; i < 640; i++)
         {
             float distance = inputs.ranges[i];
-            if (distance == NAN) distance = max_dist;
+            if (std::isnan(distance)) distance = max_dist;
             if (distance < min_val)
             {
                 min = i;
