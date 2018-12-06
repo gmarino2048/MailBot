@@ -29,7 +29,7 @@ namespace Reaction
         }
 
         bool shouldAvoid = sensors.LASERSCAN_DISTANCE < 0.5f;
-        bool isAvoiding = next_state == Avoid_Obstacle;
+        bool isAvoiding = current_reaction == Avoid_Obstacle;
 
         if (isAvoiding) next_state = avoid_obstacle(&reaction, &sensors, current_time);
         if (shouldAvoid)
