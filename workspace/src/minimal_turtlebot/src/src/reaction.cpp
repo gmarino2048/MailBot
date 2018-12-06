@@ -182,6 +182,7 @@ namespace Reaction
         return Stop_Error;
     }
 
+    float direction;
     uint8_t avoid_obstacle (Turtlebot_Reaction * reaction, Sensor::SENSOR_STATES * sensors, long current_time)
     {
         float vel;
@@ -190,8 +191,6 @@ namespace Reaction
 
         Movement::halt(&vel, &ang);
         sound = 2;
-
-        float direction;
 
         if (current_time < 3e9)
         {
