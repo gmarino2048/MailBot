@@ -19,7 +19,7 @@ namespace Reaction
         uint8_t next_state = Default;
         Turtlebot_Reaction reaction;
 
-        ROS_INFO("Laserscan_Distance: %f", sensors->LASERSCAN_DISTANCE);
+        ROS_INFO("Laserscan_Distance: %f", sensors.LASERSCAN_DISTANCE);
 
         // State machine should always stop if lifted
         if (sensors.WHEEL != 0)
