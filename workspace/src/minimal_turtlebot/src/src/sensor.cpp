@@ -95,7 +95,7 @@ namespace Sensor {
         float delta = 57.0f/640.0f;
 
         int min = 0;
-        float max_dist = 1000.0f
+        float max_dist = 1000.0f;
         float min_val = max_dist;
         for (int i = 0; i < 640; i++)
         {
