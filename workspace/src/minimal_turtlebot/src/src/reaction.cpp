@@ -53,7 +53,6 @@ namespace Reaction
             uint8_t cliff = sensors.CLIFF;
 
             // Bumpers take precedence
-            ROS_INFO("Bumpers: %o")
             if (bumpers) direction = bumpers & 1;
             else if (cliff) direction = cliff & 1;
 
