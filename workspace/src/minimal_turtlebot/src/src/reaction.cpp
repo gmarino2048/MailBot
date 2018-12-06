@@ -19,6 +19,8 @@ namespace Reaction
         uint8_t next_state = Default;
         Turtlebot_Reaction reaction;
 
+        ROS_INFO("Laserscan_Distance: %f", sensors->LASERSCAN_DISTANCE);
+
         // State machine should always stop if lifted
         if (sensors.WHEEL != 0)
         {
@@ -72,7 +74,7 @@ namespace Reaction
 
             // Object avoidance without stopping
             float ang;
-            if (sensors.LASERSCAN_DISTANCE < 1)
+            if (sensors.LASERSCAN_DISTANCE < 3)
             {
                 bool direction = sensors.LASERSCAN_ANGLE > 0;
                 ang = MAX_ANG_VEL;
@@ -83,7 +85,7 @@ namespace Reaction
                 if (sensors.LASERSCAN_ANGLE < 0) turn = 1.0f;
                 else turn = -1.0f;
 
-                float dist_scale = 1 - (2 * sensors.LASERSCAN_DISTANCE);
+                float dist_scale =  1 - ((sensors.LASERSCAN_DISTANCE)/3);
                 float angle_scale = (1 - (abs(sensors.LASERSCAN_ANGLE) / MAX_ANGLE));
 
                 ang = ang * turn * dist_scale * angle_scale;
@@ -199,7 +201,7 @@ namespace Reaction
             return Avoid_Obstacle;
         }
 
-        if (sensors->LASERSCAN_DISTANCE < 0.5f)
+        if (sensors->LASERSCAN_DISTANCE < 1.0f)
         {
             vel = 0;
             ang = Control::angular;
