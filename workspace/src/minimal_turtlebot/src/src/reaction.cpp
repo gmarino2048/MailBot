@@ -44,7 +44,7 @@ namespace Reaction
         bool shouldBacktrack = !running && (sensors.BUMPER != 0 || sensors.CLIFF != 0);
         bool isBacktracking = current_reaction == Backtrack;
 
-        if (isBacktracking) next_state = backtrack(&reaction, -1, current_time);
+        if (isBacktracking) next_state = backtrack(&reaction, 255, current_time);
         else if (shouldBacktrack && current_reaction == Default) 
         {
             Control::reset_time();
@@ -53,8 +53,9 @@ namespace Reaction
             uint8_t cliff = sensors.CLIFF;
 
             // Bumpers take precedence
-            if (bumpers) direction = bumpers && 1;
-            else if (cliff) direction = cliff && 1;
+            ROS_INFO("Bumpers: %o")
+            if (bumpers) direction = bumpers & 1;
+            else if (cliff) direction = cliff & 1;
 
             next_state = backtrack(&reaction, direction, 0);
         }
