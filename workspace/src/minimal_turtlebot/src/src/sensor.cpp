@@ -100,7 +100,6 @@ namespace Sensor {
         {
             float distance = inputs.ranges[i];
             if (std::isnan(distance)) distance = max_dist;
-            ROS_INFO("%f", distance);
             if (distance < min_val)
             {
                 min = i;
@@ -110,13 +109,11 @@ namespace Sensor {
 
         float theta = ((float)min - 640.0f) * delta;
 
-        if (min_val < 0.5f)
-        {
-            sensors -> LASERSCAN = 1;
-            sensors -> LASERSCAN_ANGLE = theta;
-            sensors -> LASERSCAN_DISTANCE = min_val;
-        }
-        else sensors -> LASERSCAN = 0;
+
+        ROS_INFO("min_val: %f", min_val);
+        
+        sensors->LASERSCAN_ANGLE = theta;
+        sensors->LASERSCAN_DISTANCE = min_val;
     }
 
     float check_imu (turtlebotInputs inputs) {
