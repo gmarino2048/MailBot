@@ -80,8 +80,8 @@ namespace Reaction
                 ROS_INFO("theta: %f, distance: %f", sensors.LASERSCAN_ANGLE, sensors.LASERSCAN_DISTANCE);
 
                 float turn;
-                if (sensors.LASERSCAN_ANGLE < 0) turn = -1.0f;
-                else turn = 1.0f;
+                if (sensors.LASERSCAN_ANGLE < 0) turn = 1.0f;
+                else turn = -1.0f;
 
                 float dist_scale = 1 - (2 * sensors.LASERSCAN_DISTANCE);
                 float angle_scale = (1 - (abs(sensors.LASERSCAN_ANGLE) / MAX_ANGLE));
