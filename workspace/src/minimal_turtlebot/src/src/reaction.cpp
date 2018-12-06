@@ -192,8 +192,6 @@ namespace Reaction
         sound = 2;
 
         float direction;
-        if (sensors->LASERSCAN_ANGLE > 0) direction = -1.0f;
-        else direction = 1.0f;
 
         if (current_time < 3e9)
         {
@@ -202,13 +200,17 @@ namespace Reaction
             reaction->sound = sound;
 
             ROS_INFO("Waiting: %ld", current_time);
+
+            if (sensors->LASERSCAN_ANGLE > 0) direction = -1.0f;
+            else direction = 1.0f;
+
             return Avoid_Obstacle;
         }
 
         if (sensors->LASERSCAN_DISTANCE < 1.0f)
         {
             vel = 0;
-            ang = Control::angular * direction;
+            ang = Control::angular;
             sound = 7;
 
             reaction -> velocity = vel;
