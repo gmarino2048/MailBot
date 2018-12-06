@@ -111,6 +111,8 @@ namespace Reaction
         if (direction < 0) direction = current_direction;
         else current_direction == direction;
 
+        ROS_INFO("Direction: %d", direction);
+
         // Set Values so that pointers fill values later
         reaction->velocity = vel;
         reaction->angular = ang;
@@ -180,7 +182,6 @@ namespace Reaction
         return Stop_Error;
     }
 
-    float direction;
     uint8_t avoid_obstacle (Turtlebot_Reaction * reaction, Sensor::SENSOR_STATES * sensors, long current_time)
     {
         float vel;
@@ -195,9 +196,6 @@ namespace Reaction
             reaction->velocity = vel;
             reaction->angular = ang;
             reaction->sound = sound;
-
-            if (sensors->LASERSCAN_ANGLE > 0) direction = -1.0f;
-            else direction = 1.0f;
 
             return Avoid_Obstacle;
         }
